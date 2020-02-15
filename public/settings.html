@@ -25,25 +25,35 @@
     <div class = "container-fluid">
         <div class="header clearfix">
           <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1"><img class = "logo" src = "img/Caht-Logo.png"></span>
+            <span class="navbar-brand mb-0 h1"><img class = "logo" src = ""></span>
               <p id = "user-name"></p>
-              <a class="btn btn-outline-primary" id = "chat" href = "index.html">Caht</a>
-              <a class="btn btn-outline-primary active" id = "settings" href = "settings.html">Steitngs<span class="sr-only">(current)</span></a>
-              <button class="btn btn-outline-primary" id = "log-out" type = "click">Lgo Otu</button>
+              <a class="btn btn-outline-primary" id = "chat" href = "index.html">Appointments</a>
+              <a class="btn btn-outline-primary" id = "availability" href = "availability.html">Availability</a>
+              <a class="btn btn-outline-primary active" id = "settings" href = "settings.html">Settings<span class="sr-only">(current)</span></a>
+              <button class="btn btn-outline-primary" id = "log-out" type = "click">Log Out</button>
           </nav>
         </div>
 
         <div class = "container">
           <dl class="form-group">
-            <dt><label for="user_profile_name">Display Name</label></dt>
+            <dt><label for="address">Change Address</label></dt>
             <dd>
-              <input class="form-control" type="text" value="" name="user[profile_name]" id="user_profile_name">
+              <input class="form-control" type="text" value="" name="address" id="address">
             </dd>
-            <dd><small id = "name-info" class="text-muted">
-              The name will be displayed to the public.
+            <dd><small id = "address-info" class="text-muted">
+              Change business address.
             </small></dd>
           </dl>
 
+          <dl class="form-group">
+            <dt><label for="phone-number">Change Phone Number</label></dt>
+            <dd>
+              <input class="form-control" type="text" value="" name="phone-number" id="phone-number">
+            </dd>
+            <dd><small id = "encrypt-info" class="text-muted">
+              Change business phone number.
+            </small></dd>
+          </dl>
           <dl class="form-group">
             <dt><label for="inputPassword">Update Password</label></dt>
             <div class="row">
@@ -58,17 +68,7 @@
             </div>
           </dl>
           
-        <dl class="form-group">
-          <dt><label for="user_profile_bio">Encryption Mode</label></dt>
-          <select class="custom-select mr-sm-2" name="encryption-mode" id="encryption-mode">
-            <option id = "nr"value="nr">Normal</option>
-            <option id = "nn" value="nn">None</option>
-            <option id = "cr" value="cr">Crazy</option>
-          </select>
-          <dd><small id = "encrypt-info" class="text-muted">
-            Chat encrypting options.
-          </small></dd>
-        </dl>
+        
 
         <p><button id = "save-settings" type="click" class="btn btn-primary">Update Settings</button></p>
       </div>
