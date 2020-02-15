@@ -1,6 +1,5 @@
 (function(){
-    var firebase = app_fireBase;
-    const db = firebase.database();
+    const db = app_fireBase.database();
     const users = db.ref("/users"); //save in users folder in database
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
     let urlRedirect = "";
