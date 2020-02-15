@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
       start: eventDate+"T"+eventTime+":00",
     }
     calendar.addEvent(newEvent)
-    pushEventToDb(event);
+    pushEventToDb(newEvent);
   }
 
-  function pushEventToDb(event){
+  function pushEventToDb(newEvent){
     //Add event to user's db
     console.log(firebase.auth().currentUser);
     const email = firebase.auth().currentUser.email
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
           var value = childSnapshot.val();
           if (value.userEmail === email) {
             var eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
-              eventRef.push(event)
+              eventRef.push(newEvent)
           }
         });
       });
