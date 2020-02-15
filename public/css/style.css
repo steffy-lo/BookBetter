@@ -84,6 +84,7 @@ p, dt{
 }
 
 .center-logo{
+    margin-top: 3%;
     width: 160px;
     height: 160px;
     display: block;
