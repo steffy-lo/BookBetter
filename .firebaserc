@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bookbetter-ec657"
+  },
+  "targets": {
+    "bookbetter-ec657": {
+      "hosting": {
+        "main": [
+          "bookbetter"
+        ]
+      }
+    }
   }
 }
