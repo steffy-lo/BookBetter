@@ -96,3 +96,7 @@ p, dt{
     margin-right: auto;
 
 }
+
+.fc-today {
+    background: rgb(231, 204, 146) !important;
+}
