@@ -1,5 +1,3 @@
-var firebase = app_fireBase;
-const db = firebase.database();
 const users = db.ref("/users");
 
 function init() {
