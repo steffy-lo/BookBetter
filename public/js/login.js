@@ -9,27 +9,29 @@
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
-            const userEmail = authResult.currentUser.email
-            for (let i = 0; i < users.length; i++) {
-              if (users[i].email === userEmail) {
-                if (users[i].type == "") {
-                  urlRedirect = 'chooseType.html'
-                }
-                else if (users[i].type === "pro") {
-                  urlRedirect = 'indexPro.html'
+            if (authResult.currentUser) {
+              const userEmail = authResult.currentUser.email
+              for (let i = 0; i < users.length; i++) {
+                if (users[i].email === userEmail) {
+                  if (users[i].type == "") {
+                    urlRedirect = 'chooseType.html'
+                  }
+                  else if (users[i].type === "pro") {
+                    urlRedirect = 'indexPro.html'
 
-                } else { // type is client
-                  urlRedirect = 'index.html'
+                  } else { // type is client
+                    urlRedirect = 'index.html'
+                  }
+                  break;
                 }
-                break;
               }
+              const data = {
+                userEmail,
+                type: ""
+              }
+              users.push(data);
+              return true;
             }
-            const data = {
-              userEmail,
-              type: ""
-            }
-            users.push(data);
-            return true;
           },
           uiShown: function() {
             // The widget is rendered.
