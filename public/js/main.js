@@ -9,16 +9,17 @@ const userName = document.getElementById("user-name");
 const db = firebase.database();
 
 function init(){
-  const user = firebase.auth().currentUser;
-  if (user) {
-    // User is signed in. Get their name.
-    name = user.displayName;
-    email = user.email;
-    userName.innerHTML = "Welcome, " + name + "!";
-  }else{
-      //redirect to login page
-      window.location.replace("login.html");
-  }
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in. Get their name.
+      name = user.displayName;
+      email = user.email;
+      userName.innerHTML = "Welcome, " + name + "!";
+    }else{
+        //redirect to login page
+        window.location.replace("login.html");
+    }
+  });
   document.getElementById('log-out').addEventListener('click', logOut);
   msgForm.addEventListener('submit', sendMessage);
 }
