@@ -13,13 +13,24 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-storage.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
-
+    <!-- jQuery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--MomentJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <!--Full Calendar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/interaction/main.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link href = 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet'>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"rel='stylesheet'>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css" rel='stylesheet'>
     
 </head>
 <body>
@@ -29,7 +40,7 @@
             <span class="navbar-brand mb-0 h1"><img class = "logo" src = "img/icon.png"></span>
               <p id = "user-name"></p>
               <a class="btn btn-outline-primary active" id = "book" href = "index.html">Book Appointment<span class="sr-only">(current)</span></a>
-              <a class="btn btn-outline-primary" id = "contacts" href = "availability.html">Contacts</a>
+              <a class="btn btn-outline-primary" id = "contacts" href = "contacts.html">Contacts</a>
               <a class="btn btn-outline-primary" id = "settings" href = "settings.html">Settings</a>
               <button class="btn btn-outline-primary" id = "log-out" type = "click">Log Out</button>
           </nav>
@@ -43,12 +54,17 @@
                 </button>
               </div>
             </div>
-          </form>
+        </form>
+
+        <div id = "calendar">
+
+        </div>
     </div>
     
       
     <script src='./js/fireBase.js'></script>
     <script src='./js/main.js'></script>
+    <script src = "./js/appointments.js"></script>
 </body>
 
 <footer id = "footer" class="page-footer font-small blue">
