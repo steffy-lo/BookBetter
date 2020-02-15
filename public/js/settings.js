@@ -1,6 +1,4 @@
 var firebase = app_fireBase;
-const userName = document.getElementById("user-name");
-const setName = document.getElementById("user_profile_name");
 var name = "";
 
 function init(){
