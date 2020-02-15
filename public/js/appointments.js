@@ -8,15 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
     nowIndicator: true,
     minTime: '8:00',
     maxTime: '18:00',
+    height: 600,
     select: function(info) {
       info.startStr = calendar.formatDate(info.start, {hour:'numeric',minute:'2-digit'});
       info.endStr = calendar.formatDate(info.end, {hour:'numeric',minute:'2-digit'});
       alert('Book Appointment from '+ info.startStr+' to '+info.endStr+'?');
-      calendar.addEvent({
+      const event={
         title: 'Appointment',
         start: info.start,
-        allDay: false
-      });
+        end: info.end
+      }
+      calendar.addEvent(event);
+      console.log(event);
     },  
   });
 
