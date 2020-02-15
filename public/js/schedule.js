@@ -14,19 +14,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var calendar = new FullCalendar.Calendar(calendarEl, config);
     calendar.render();
-    setTimeout(function() { populateCalendar(config); }, 500);
+    setTimeout(function() { populateCalendar(calendar); }, 1000);
 
 });
 
-function populateCalendar(config) {
+function populateCalendar(calendar) {
   console.log(firebase.auth().currentUser);
   const email = firebase.auth().currentUser.email;
   firebase.database().ref("/users").once("value")
     .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
-        var value = childSnapshot.val();
+        const value = childSnapshot.val();
         if (value.userEmail === email) {
-          console.log(value)
+          console.log(value.events)
+          for (var key in value.events) {
+            const event = value.events[key];
+            calendar.addEvent(event)
+          }
         }
       });
     });
