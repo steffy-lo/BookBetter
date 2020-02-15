@@ -13,6 +13,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-storage.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+    <!-- jQuery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +28,7 @@
     <div class = "container-fluid">
         <div class="header clearfix">
           <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1"><img class = "logo" src = ""></span>
+            <span class="navbar-brand mb-0 h1"><img class = "logo" src = "img/icon.png"></span>
               <p id = "user-name"></p>
               <a class="btn btn-outline-primary" id = "book" href = "index.html">Book Appointment<span class="sr-only">(current)</span></a>
               <a class="btn btn-outline-primary" id = "contacts" href = "contacts.html">Contacts</a>
@@ -41,12 +43,12 @@
             <dd>
               <div class="form-check-inline">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" checked = "true"name="optradio">ON
+                  <input type="radio" class="form-check-input" checked = "true"name="optradio"> ON
                 </label>
               </div>
               <div class="form-check-inline">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">OFF
+                  <input type="radio" class="form-check-input" name="optradio"> OFF
                 </label>
               </div>
             </dd>
@@ -90,7 +92,7 @@
 
 <footer id = "footer" class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-       Chat Cafe (Caht Cfae).
+      Book Better.
     </div>
 </footer>
 </html>
