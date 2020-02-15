@@ -7,16 +7,14 @@ const msgInput = document.getElementById("msg-input");
 const msgBtn = document.getElementById("msg-btn");
 const userName = document.getElementById("user-name");
 const db = firebase.database();
-const msgRef = db.ref("/msgs"); //save in msgs folder in database
+const users = db.ref("/users"); //save in users folder in database
 
 function init(){
-
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in. Get their name.
-           name = user.displayName;
-           email = user.email;
-          msgRef.on('child_added', updateMsgs);
+          name = user.displayName;
+          email = user.email;
           userName.innerHTML = "Welcome, " + name + "!";
         }else{
             //redirect to login page
