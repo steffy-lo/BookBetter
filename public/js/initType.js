@@ -24,7 +24,6 @@ function setUserTypeClient() {
     const data = {
         userEmail,
         type: "client",
-        events: []
     }
     users.push(data);
     window.location.replace("index.html");
@@ -33,8 +32,7 @@ function setUserTypeClient() {
 function setUserTypePro() { 
     const data = {
         userEmail,
-        type: "pro",
-        events: []
+        type: "pro"
     }
     users.push(data);
     window.location.replace("indexPro.html");

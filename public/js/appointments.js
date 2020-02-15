@@ -35,7 +35,8 @@ function pushEventToDb(event){
         var value = childSnapshot.val();
         console.log(value);
         if (value.userEmail === email) {
-            value.events.push(event);
+          var eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
+            eventRef.push(event)
         }
       });
     });

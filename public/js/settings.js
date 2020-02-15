@@ -1,8 +1,6 @@
 var firebase = app_fireBase;
 const userName = document.getElementById("user-name");
 const setName = document.getElementById("user_profile_name");
-const encryption = document.getElementById("encryption-mode");
-var encryptMode = null;
 var name = "";
 
 function init(){
@@ -11,24 +9,13 @@ function init(){
         // User is signed in. Get their name and email.
         name = user.displayName;
         userName.innerHTML = "Welcome, " + name + "!";
-        setName.placeholder = name;
         }else{
             //redirect to login page
             window.location.replace("login.html");
         }
     });
 
-    //get current encryption settings and display it first in the dropdown
-    if(!fetchJson()){
-        encryptMode = "nr";
-    }else{
-        encryptMode = fetchJson();
-    }
-    console.log(encryptMode);
-    document.getElementById(encryptMode).selected = "selected";
-
     document.getElementById('log-out').addEventListener('click', logOut);
-    document.getElementById('save-settings').addEventListener('click', saveSettings);
 }
 
 function logOut(){
