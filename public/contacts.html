@@ -34,29 +34,48 @@
               <button class="btn btn-outline-primary" id = "log-out" type = "click">Log Out</button>
           </nav>
       </div>
-      <form id = "addContacts" method = "post">
-        <input id= 'contactName' type="text" placeholder="Contact Name" autocomplete="off" required>
-        <input id= 'email' type="text" placeholder="Email" autocomplete="off" required>
-        <input id= 'phoneNum' type="text" placeholder="Phone Number" autocomplete="off" required>
-        <input id = 'addNewContact' class="btn btn-success" type="click" value="Add Contact">
-      </form>
-      <h3>Contact List</h3>
-      <div id="table">
-        <table class = "table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Email</thscope="col">
-              <th scope="col">Phone Number</th>
-            </tr>
-          </thead>
-          <tbody id = "contact-data">
-            <tr>
-              <!-- Insert table via script-->
-            </tr>
-          </tbody>
-        </table>
-    </div>
+
+      <div class = "container">  
+        <dl class="form-group" id = "addContacts" method = "post">
+          <h4><label for="add-event">Add Contacts</label></h4>
+          <p>Add professionals to book appointments with them.</p>
+            <div class="row">
+                <div class = "col">
+                    <dd><input class="form-control" type="text" value="" name="pro-name" id="contactName"placeholder="Contact Name"></dd>
+                    <small id="name-info" class="text-muted">Contact or business name</small>
+                  </div>
+                <div class = "col">
+                  <dd><input type="email" id="email" class="form-control mr-sm-2" placeholder="Email"></dd>
+                  <small id="email-info" class="text-muted">Email</small>
+                </div>
+                <div class = "col">
+                  <dd><input type="number" id="phoneNum" class="form-control mr-sm-2" placeholder="Phone Number"></dd>
+                  <small id="phone-info" class="text-muted">Phone Number</small>
+                </div>
+        
+            </div>
+        </dl>
+        <p><button id = "addNewContact" type="click" class="btn btn-primary">Add Contact</button></p>
+    
+
+        <p>Contact List</p>
+        <div id="table">
+          <table class = "table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</thscope="col">
+                <th scope="col">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody id = "contact-data">
+              <tr>
+                <!-- Insert table via script-->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <script src='./js/fireBase.js'></script>
     <script src='./js/contact.js'></script>

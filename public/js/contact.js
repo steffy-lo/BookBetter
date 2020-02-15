@@ -41,6 +41,7 @@ function addContact() {
                 if (value.email == contactEmail) {
                     // Contact already exists!
                     exists = true;
+                    alert("Contact already exists!");
                     console.log("contact already exists!")
                 }
                 })
