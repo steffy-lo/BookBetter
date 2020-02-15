@@ -95,3 +95,7 @@ p, dt{
     justify-content: center;
 }
 
+.fc-time-grid .fc-slats td {
+    height: 2em;
+    border-bottom: 0;
+}
