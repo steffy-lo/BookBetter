@@ -28,15 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function pushEventToDb(event){
+
+  //Add event to user's db
   const email = firebase.auth().currentUser.email
     firebase.database().ref("/users").once("value")
     .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
         var value = childSnapshot.val();
-        console.log(value);
         if (value.userEmail === email) {
-            value.events.push(event);
+            //value.events.push(event);
+            console.log(value);
         }
       });
     });
+
+  //Add event to pro's db
 }
