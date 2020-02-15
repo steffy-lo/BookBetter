@@ -1,11 +1,35 @@
 (function(){
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    var firebase = app_fireBase;
+    const db = firebase.database();
+    let urlRedirect = "";
     var uiConfig = {
         callbacks: {
           signInSuccessWithAuthResult: function(authResult, redirectUrl) {
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
+            const users = db.ref("/users"); //save in users folder in database
+            const userEmail = authResult.getUser().email
+            for (let i = 0; i < users.length; i++) {
+              if (users[i].email === userEmail) {
+                if (users[i].type == "") {
+                  urlRedirect = 'chooseType.html'
+                }
+                else if (users[i].type === "pro") {
+                  urlRedirect = 'indexPro.html'
+
+                } else { // type is client
+                  urlRedirect = 'index.html'
+                }
+                break;
+              }
+            }
+            const data = {
+              userEmail,
+              type: ""
+            }
+            users.push(data);
             return true;
           },
           uiShown: function() {
@@ -16,7 +40,7 @@
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: 'index.html',
+        signInSuccessUrl: urlRedirect,
         signInOptions: [
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
