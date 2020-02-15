@@ -48,12 +48,18 @@ p, dt{
     top: 110px;
     right: 350px;
 }
-#settings{
+
+#book{
+    position: absolute;
+    top: 110px;
+    right: 335px;
+}
+#settings, #settingsPro{
     position: absolute;
     top: 110px;
     right: 130px;
 }
-#availability{
+#availability, #contacts{
     position: absolute;
     top: 110px;
     right:230px;

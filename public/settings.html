@@ -28,18 +28,27 @@
           <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1"><img class = "logo" src = ""></span>
               <p id = "user-name"></p>
-              <a class="btn btn-outline-primary" id = "appt" href = "indexPro.html">Appointments</a>
-              <a class="btn btn-outline-primary" id = "availability" href = "availability.html">Availability</a>
-              <a class="btn btn-outline-primary active" id = "settingsPro" href = "settingsPro.html">Settings<span class="sr-only">(current)</span></a>
+              <a class="btn btn-outline-primary" id = "book" href = "index.html">Book Appointment<span class="sr-only">(current)</span></a>
+              <a class="btn btn-outline-primary" id = "contacts" href = "contacts.html">Contacts</a>
+              <a class="btn btn-outline-primary active" id = "settings" href = "settings.html">Settings</a>
               <button class="btn btn-outline-primary" id = "log-out" type = "click">Log Out</button>
           </nav>
         </div>
 
         <div class = "container">
           <dl class="form-group">
-            <dt><label for="address">Change Address</label></dt>
+            <dt><label for="address">Notifications</label></dt>
             <dd>
-              <input class="form-control" type="text" value="" name="address" id="address">
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" checked = "true"name="optradio">ON
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optradio">OFF
+                </label>
+              </div>
             </dd>
             <dd><small id = "address-info" class="text-muted">
               Change business address.
@@ -52,7 +61,7 @@
               <input class="form-control" type="text" value="" name="phone-number" id="phone-number">
             </dd>
             <dd><small id = "encrypt-info" class="text-muted">
-              Change business phone number.
+              Change phone number.
             </small></dd>
           </dl>
           <dl class="form-group">
