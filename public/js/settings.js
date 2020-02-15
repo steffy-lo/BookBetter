@@ -10,7 +10,7 @@ function init(){
         if (user) {
         // User is signed in. Get their name and email.
         name = user.displayName;
-        userName.innerHTML = "Wleocme, " + name + "!";
+        userName.innerHTML = "Welcome, " + name + "!";
         setName.placeholder = name;
         }else{
             //redirect to login page
@@ -45,21 +45,6 @@ function logOut(){
 function saveSettings(){
     var user = firebase.auth().currentUser;
 
-    //Display Name settings - update name if input not empty and a new name is entered
-    if(setName.value.trim()){
-        if(name !== setName.value){
-            user.updateProfile({
-                displayName: setName.value
-              }).then(function() {
-                  userName.innerHTML = "Wleocme, " + setName.value + "!";
-                  document.getElementById("name-info").innerHTML = "<b>New display name SAVED!</b>";
-                
-              }).catch(function(error) {
-                  console.log(error);
-            });
-        }
-    }
-
     //New Password settings - update only if current Password is correct and user is reauthenticated
     const newPassword = document.getElementById("inputPassword6");
     const password =  document.getElementById("inputPassword");
@@ -78,14 +63,6 @@ function saveSettings(){
             document.getElementById("passwordCurrent").innerHTML = error;
         });
     }
-
-    //Ecryption Mode settings (nr, nn, cr)
-    var selectedMode = encryption.options[encryption.selectedIndex].value;
-    if(encryptMode !== selectedMode){
-        updateJson(selectedMode);
-        document.getElementById("encrypt-info").innerHTML = "<b>Encryption mode UPDATED!</b>";
-    }
-    
 }
 
 //Reauthenticate to update password
@@ -93,17 +70,6 @@ function reauthenticate(password){
     var user = firebase.auth().currentUser;
     var cred = firebase.auth.EmailAuthProvider.credential(user.email, password);
     return user.reauthenticateWithCredential(cred);
-}
-
-//updates encryption settings
-function updateJson(selectedMode){
-    localStorage.setItem('settings',JSON.stringify(selectedMode));
-}
-
-//Get encryption settings
-function fetchJson(){
-    var settings = JSON.parse(localStorage.getItem('settings'));
-    return settings;
 }
 
 document.addEventListener('DOMContentLoaded',init);
