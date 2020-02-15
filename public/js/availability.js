@@ -26,4 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
       start: eventDate+"T"+eventTime+":00",
     }
     calendar.addEvent(newEvent)
+    pushEventToDb(event);
+  }
+
+  function pushEventToDb(event){
+    //Add event to user's db
+    const email = firebase.auth().currentUser.email
+      firebase.database().ref("/users").once("value")
+      .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+          var value = childSnapshot.val();
+          if (value.userEmail === email) {
+            var eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
+              eventRef.push(event)
+          }
+        });
+      });
   }

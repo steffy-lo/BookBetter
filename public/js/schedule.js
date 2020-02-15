@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-  
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+    const config = {
       plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
       selectable: true,
       defaultView: 'timeGridWeek',
@@ -11,8 +11,26 @@ document.addEventListener('DOMContentLoaded', function() {
       minTime: '8:00',
       maxTime: '18:00',
       height: 600,
-      //load data
-    });
+      events: []
+    }
+    var calendar = new FullCalendar.Calendar(calendarEl, config);
+    populateCalendar(config)
   
     calendar.render();
+
   });
+
+  function populateCalendar(config) {
+    console.log(firebase.auth().currentUser)
+    const email = firebase.auth().currentUser.email
+      firebase.database().ref("/users").once("value")
+      .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+          var value = childSnapshot.val();
+          if (value.userEmail === email) {
+            console.log(value)
+          }
+        });
+      });
+
+  }
