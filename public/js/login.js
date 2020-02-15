@@ -1,7 +1,8 @@
 (function(){
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
     var firebase = app_fireBase;
     const db = firebase.database();
+    const users = db.ref("/users"); //save in users folder in database
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
     let urlRedirect = "";
     var uiConfig = {
         callbacks: {
@@ -9,7 +10,6 @@
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
-            const users = db.ref("/users"); //save in users folder in database
             const userEmail = authResult.getUser().email
             for (let i = 0; i < users.length; i++) {
               if (users[i].email === userEmail) {
