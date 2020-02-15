@@ -32,9 +32,23 @@ function addContact() {
                 email: contactEmail,
                 phone: phoneNumber
             }
+            let exists = false;
             var contactRef = db.ref("/users/"+childSnapshot.key.toString()+"/contacts")
-            contactRef.push(contact)
-            populateTable();
+            contactRef.once("value")
+            .then(function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                var value = childSnapshot.val();
+                if (value.email == contactEmail) {
+                    // Contact already exists!
+                    exists = true;
+                    console.log("contact already exists!")
+                }
+                })
+                if (!exists) {
+                    contactRef.push(contact)
+                    populateTable();
+                }
+            })
         }
         });
     });
