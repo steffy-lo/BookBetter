@@ -1,10 +1,6 @@
 var firebase = app_fireBase;
 let email = "";
 let name = "";
-const msgScreen = document.getElementById("messages");
-const msgForm = document.getElementById("messageForm");
-const msgInput = document.getElementById("msg-input");
-const msgBtn = document.getElementById("msg-btn");
 const userName = document.getElementById("user-name");
 const db = firebase.database();
 
@@ -21,7 +17,6 @@ function init(){
     }
   });
   document.getElementById('log-out').addEventListener('click', logOut);
-  msgForm.addEventListener('submit', sendMessage);
 }
 
 function logOut(){

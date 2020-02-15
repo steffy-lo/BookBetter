@@ -8,12 +8,13 @@ function init(){
         if (user) {
             // User is signed in
             userEmail = user.email;
+            console.log("user is signed in")
             
         }else{
             //redirect to login page
             window.location.replace("login.html");
+            console.log("redirect to login page")
         }
-        console.log(users);
       });
       document.getElementById("setClient").addEventListener('click', setUserTypeClient);
       document.getElementById("setPro").addEventListener('click', setUserTypePro);
@@ -22,16 +23,18 @@ function init(){
 function setUserTypeClient() {
     const data = {
         userEmail,
-        type: "client"
+        type: "client",
+        events: []
     }
     users.push(data);
     window.location.replace("index.html");
 }
 
-function setUserTypePro(email) { 
+function setUserTypePro() { 
     const data = {
         userEmail,
-        type: "pro"
+        type: "pro",
+        events: []
     }
     users.push(data);
     window.location.replace("indexPro.html");
