@@ -1,4 +1,6 @@
 var firebase = app_fireBase;
+const userName = document.getElementById("user-name");
+const setName = document.getElementById("user_profile_name");
 var name = "";
 
 function init(){
@@ -7,16 +9,13 @@ function init(){
         // User is signed in. Get their name and email.
         name = user.displayName;
         userName.innerHTML = "Welcome, " + name + "!";
-        setName.placeholder = name;
         }else{
             //redirect to login page
             window.location.replace("login.html");
         }
     });
 
-
     document.getElementById('log-out').addEventListener('click', logOut);
-    document.getElementById('save-settings').addEventListener('click', saveSettings);
 }
 
 function logOut(){

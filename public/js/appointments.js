@@ -36,6 +36,8 @@ function pushEventToDb(event){
         snapshot.forEach(function(childSnapshot) {
         var value = childSnapshot.val();
         if (value.userEmail === email) {
+          var eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
+            eventRef.push(event)
             //value.events.push(event);
             console.log(value);
         }
