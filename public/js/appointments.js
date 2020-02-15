@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
@@ -19,9 +20,23 @@ document.addEventListener('DOMContentLoaded', function() {
         end: info.end
       }
       calendar.addEvent(event);
-      console.log(event);
+      pushEventToDb(event);
     },  
   });
 
   calendar.render();
 });
+
+function pushEventToDb(event){
+  const email = firebase.auth().currentUser.email
+    firebase.database().ref("/users").once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        var value = childSnapshot.val();
+        console.log(value);
+        if (value.userEmail === email) {
+            value.events.push(event);
+        }
+      });
+    });
+}
