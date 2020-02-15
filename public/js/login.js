@@ -20,12 +20,10 @@ let email = "";
                     // user already exists in the database
                     console.log("user already in database")
                     if (value.type === "client") {
-                        redirectPage = "index.html";
-                        
+                        redirectPage = "index.html";              
                     }
                     else {
                         redirectPage = "indexPro.html";
-                        return true;
                     }
                 }
                 });
