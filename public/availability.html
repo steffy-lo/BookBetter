@@ -28,16 +28,45 @@
           <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1"><img class = "logo" src = "img/icon.png"></span>
               <p id = "user-name"></p>
-              <a class="btn btn-outline-primary" id = "appt" href = "indexPro.html">Appointments</a>
-              <a class="btn btn-outline-primary active" id = "availability" href = "availability.html">Availability<span class="sr-only">(current)</span></a>
+              <a class="btn btn-outline-primary" id = "appt" href = "indexPro.html">View Schedule</a>
+              <a class="btn btn-outline-primary active" id = "availability" href = "availability.html">Add Events<span class="sr-only">(current)</span></a>
               <a class="btn btn-outline-primary" id = "settingsPro" href = "settingsPro.html">Settings</a>
               <button class="btn btn-outline-primary" id = "log-out" type = "click">Log Out</button>
           </nav>
         </div>
 
+        <div class = "container">  
+            <dl class="form-group">
+              <h4><label for="add-event">Add Events</label></h4>
+              <p>Add personal events to your schedule (i.e. lunch, meetings).</p>
+                <div class="row">
+                    <div class = "col">
+                        <dd><input class="form-control" type="text" value="" name="event-name" id="add-event"placeholder="Event Name"></dd>
+                        <small id="name-info" class="text-muted">Event Name</small>
+                      </div>
+                    <div class = "col">
+                      <dd><input type="time" id="event-time" class="form-control mr-sm-2" placeholder="Event Time"></dd>
+                      <small id="time-info" class="text-muted">Event Time</small>
+                    </div>
+                    <div class = "col">
+                      <dd><input type="date" id="event-date" class="form-control mr-sm-2" placeholder="Event Date"></dd>
+                      <small id="date-info" class="text-muted">Event Date</small>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" class=""id="recurrence">
+                        <label class="form-check-label" for="recurrence">Repeat Daily</label>
+                      </div>
+                  </div>
+              
+            </dl>
+          
+  
+          <p><button id = "save-settings" type="click" class="btn btn-primary">Update Settings</button></p>
+        </div>        
         
     </div>
     <script src='./js/fireBase.js'></script>
+    <script src='./js/main.js'></script>
     
 </body>
 
