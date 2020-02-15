@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
       timeZone: 'UTC',
       defaultView: 'listMonth',
       height: 600,
-      events: 'https://fullcalendar.io/demo-events.json'
+      events: []
     });
   
     calendar.render();
