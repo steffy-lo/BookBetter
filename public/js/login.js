@@ -9,7 +9,7 @@
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
-            const userEmail = authResult.getUser().email
+            const userEmail = authResult.currentUser.email
             for (let i = 0; i < users.length; i++) {
               if (users[i].email === userEmail) {
                 if (users[i].type == "") {
