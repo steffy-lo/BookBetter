@@ -13,6 +13,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-storage.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+    <!--Full Calendar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js"></script>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +25,10 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    <link href = 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet'>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css" rel='stylesheet'>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"rel='stylesheet'>
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css" rel='stylesheet'>
     
 </head>
 <body>
@@ -55,18 +64,19 @@
                     <div class="col">
                         <input type="checkbox" class=""id="recurrence">
                         <label class="form-check-label" for="recurrence">Repeat Daily</label>
-                      </div>
-                  </div>
-              
+                    </div>
+                </div>
             </dl>
-          
-  
-          <p><button id = "save-settings" type="click" class="btn btn-primary">Update Settings</button></p>
+          <p><button id = "save-settings" type="click" class="btn btn-primary">Update Schedule</button></p>
         </div>        
         
+        <div id ="calendar">
+
+        </div>
     </div>
     <script src='./js/fireBase.js'></script>
     <script src='./js/main.js'></script>
+    <script src='./js/availability.js'></script>
     
 </body>
 
