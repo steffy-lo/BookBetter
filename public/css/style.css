@@ -83,3 +83,9 @@ p, dt{
     margin-left: auto;
     margin-right: auto;
 }
+
+#choose{
+    display: flex;
+    justify-content: center;
+}
+
