@@ -7,23 +7,20 @@ const msgInput = document.getElementById("msg-input");
 const msgBtn = document.getElementById("msg-btn");
 const userName = document.getElementById("user-name");
 const db = firebase.database();
-const users = db.ref("/users"); //save in users folder in database
 
 function init(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          // User is signed in. Get their name.
-          name = user.displayName;
-          email = user.email;
-          userName.innerHTML = "Welcome, " + name + "!";
-        }else{
-            //redirect to login page
-            window.location.replace("login.html");
-        }
-      });
-
-    document.getElementById('log-out').addEventListener('click', logOut);
-    msgForm.addEventListener('submit', sendMessage);
+  const user = firebase.auth().currentUser;
+  if (user) {
+    // User is signed in. Get their name.
+    name = user.displayName;
+    email = user.email;
+    userName.innerHTML = "Welcome, " + name + "!";
+  }else{
+      //redirect to login page
+      window.location.replace("login.html");
+  }
+  document.getElementById('log-out').addEventListener('click', logOut);
+  msgForm.addEventListener('submit', sendMessage);
 }
 
 function logOut(){
