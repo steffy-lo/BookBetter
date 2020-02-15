@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
   });
 
-  function updateSchedule(config, calendar) {
+  function updateSchedule(calendar) {
     const eventName = document.getElementById('add-event').value;
     const eventTime = document.getElementById('event-time').value;
     const eventDate = document.getElementById('event-date').value;
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function pushEventToDb(event){
     //Add event to user's db
+    console.log(firebase.auth().currentUser);
     const email = firebase.auth().currentUser.email
       firebase.database().ref("/users").once("value")
       .then(function(snapshot) {

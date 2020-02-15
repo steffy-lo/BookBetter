@@ -14,16 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
       events: []
     }
     var calendar = new FullCalendar.Calendar(calendarEl, config);
-    populateCalendar(config)
+    populateCalendar(config);
   
     calendar.render();
 
   });
 
   function populateCalendar(config) {
-    console.log(firebase.auth().currentUser)
-    const email = firebase.auth().currentUser.email
-      firebase.database().ref("/users").once("value")
+    console.log(firebase.auth().currentUser);
+    const email = firebase.auth().currentUser.email;
+    firebase.database().ref("/users").once("value")
       .then(function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
           var value = childSnapshot.val();
