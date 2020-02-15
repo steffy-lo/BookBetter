@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
     const config = {
       plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
       selectable: true,
@@ -14,23 +13,21 @@ document.addEventListener('DOMContentLoaded', function() {
       events: []
     }
     var calendar = new FullCalendar.Calendar(calendarEl, config);
-    populateCalendar(config);
-  
     calendar.render();
+    setTimeout(function() { populateCalendar(config); }, 500);
 
-  });
+});
 
-  function populateCalendar(config) {
-    console.log(firebase.auth().currentUser);
-    const email = firebase.auth().currentUser.email;
-    firebase.database().ref("/users").once("value")
-      .then(function(snapshot) {
-          snapshot.forEach(function(childSnapshot) {
-          var value = childSnapshot.val();
-          if (value.userEmail === email) {
-            console.log(value)
-          }
-        });
+function populateCalendar(config) {
+  console.log(firebase.auth().currentUser);
+  const email = firebase.auth().currentUser.email;
+  firebase.database().ref("/users").once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        var value = childSnapshot.val();
+        if (value.userEmail === email) {
+          console.log(value)
+        }
       });
-
-  }
+    });
+}
