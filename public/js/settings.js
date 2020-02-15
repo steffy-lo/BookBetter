@@ -1,5 +1,6 @@
 var firebase = app_fireBase;
 var name = "";
+var userName = document.getElementById("user-name");
 
 function init(){
     firebase.auth().onAuthStateChanged(function(user) {
