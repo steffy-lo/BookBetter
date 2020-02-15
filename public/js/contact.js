@@ -46,7 +46,7 @@ function addContact() {
                 }
                 })
                 if (!exists) {
-                    contactRef.push(contact)
+                    contactRef.push(contact);
                     populateTable();
                 }
             })
