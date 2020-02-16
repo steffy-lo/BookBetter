@@ -9,9 +9,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var calendar = new FullCalendar.Calendar(calendarEl, config);
     document.getElementById('update-schedule').addEventListener('click', function(){ updateSchedule(calendar); });
+    setTimeout(function() { populateCalendar(calendar); }, 500);
   
     calendar.render();
   });
+
+  function populateCalendar(calendar) {
+    console.log(firebase.auth().currentUser);
+    const email = firebase.auth().currentUser.email;
+    firebase.database().ref("/users").once("value")
+      .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+          const value = childSnapshot.val();
+          if (value.userEmail === email) {
+            console.log(value.events)
+            for (var key in value.events) {
+              const event = value.events[key];
+              calendar.addEvent(event)
+            }
+          }
+        });
+      });
+  }
 
   function updateSchedule(calendar) {
     const eventName = document.getElementById('add-event').value;
