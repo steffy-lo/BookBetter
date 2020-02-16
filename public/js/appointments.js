@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     minTime: '8:00',
     maxTime: '18:00',
     height: 600,
+    events: [],
     select: function(info) {
       const start = calendar.formatDate(info.start, {hour:'numeric',minute:'2-digit'});
       alert('Book Appointment at '+ start+ '?');
@@ -33,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function populateCalendar(calendar, proEmail) {
-  calendar.events = []
-  console.log(proEmail)
+  for (let i = 0; i < calendar.getEvents().length; i++) {
+    calendar.getEvents()[i].remove()
+  }
   firebase.database().ref("/users").once("value")
   .then(function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
@@ -94,7 +96,6 @@ function pushEventToDb(event) {
 function pushToDb(event, proEmail){
 
   //Add event to user's db
-  console.log(proEmail)
   const email = firebase.auth().currentUser.email
     firebase.database().ref("/users").once("value")
     .then(function(snapshot) {
