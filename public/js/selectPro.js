@@ -4,9 +4,6 @@ const users = db.ref("/users");
 function init(){
     let contacts = [];
     const contactsMenu = document.getElementById('select-prof');
-    while (contactsMenu.firstChild) {
-        contactsMenu.removeChild(contactsMenu.firstChild);
-    }
     users.once("value")
     .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
