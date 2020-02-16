@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     maxTime: '18:00',
     height: 600,
     select: function(info) {
-      info.startStr = calendar.formatDate(info.start, {hour:'numeric',minute:'2-digit'});
-      info.endStr = calendar.formatDate(info.end, {hour:'numeric',minute:'2-digit'});
-      alert('Book Appointment from '+ info.startStr+' to '+info.endStr+'?');
+      const start = calendar.formatDate(info.start, {hour:'numeric',minute:'2-digit'});
+      alert('Book Appointment at '+ start+ '?');
       const event={
         title: 'Appointment',
-        start: info.start,
-        end: info.end
+        start: info.startStr,
       }
       calendar.addEvent(event);
       pushEventToDb(event);
