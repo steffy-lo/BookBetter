@@ -1,5 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', function() {
+  const contactsMenu = document.getElementById('select-prof');
+
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -23,27 +24,89 @@ document.addEventListener('DOMContentLoaded', function() {
       pushEventToDb(event);
     },  
   });
+  contactsMenu.addEventListener('change', function(){ displayCalendar(calendar); })
 
   calendar.render();
 });
 
-function pushEventToDb(event){
+function populateCalendar(calendar, proEmail) {
+  calendar.events = []
+  console.log(proEmail)
+  firebase.database().ref("/users").once("value")
+  .then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+      const value = childSnapshot.val();
+      if (value.userEmail === proEmail) {
+        console.log(value.events)
+        for (var key in value.events) {
+          const event = value.events[key];
+          event.title = "Occupied"
+          calendar.addEvent(event)
+        }
+      }
+    });
+  });
+}
+
+function displayCalendar(calendar) {
+  const contactsMenu = document.getElementById('select-prof');
+  const proName = contactsMenu.options[contactsMenu.selectedIndex].value;
+  firebase.database().ref("/users").once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        const value = childSnapshot.val();
+        if (value.userEmail === email) {
+          for (var key in value.contacts) {
+            const contact = value.contacts[key].name
+            if (contact === proName) {
+              console.log(value.contacts[key].email)
+              populateCalendar(calendar, value.contacts[key].email)
+            }
+          }
+        }
+      });
+    });
+}
+
+function pushEventToDb(event) {
+  const contactsMenu = document.getElementById('select-prof');
+  const proName = contactsMenu.options[contactsMenu.selectedIndex].value;
+  firebase.database().ref("/users").once("value")
+    .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        const value = childSnapshot.val();
+        if (value.userEmail === email) {
+          for (var key in value.contacts) {
+            const contact = value.contacts[key].name
+            if (contact === proName) {
+              console.log(value.contacts[key].email)
+              pushToDb(event, value.contacts[key].email)
+            }
+          }
+        }
+      });
+    });
+}
+
+function pushToDb(event, proEmail){
 
   //Add event to user's db
+  console.log(proEmail)
   const email = firebase.auth().currentUser.email
     firebase.database().ref("/users").once("value")
     .then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
         var value = childSnapshot.val();
         if (value.userEmail === email) {
-          var eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
+            const eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
             eventRef.push(event)
-            //value.events.push(event);
-            console.log(value);
+        }
+        //Add event to pro's db
+        if (value.userEmail === proEmail) {
+            const eventRef = db.ref("/users/"+childSnapshot.key.toString()+"/events")
+            eventRef.push(event)
         }
       });
     });
-
-  //Add event to pro's db
 }
 
