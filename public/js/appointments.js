@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function populateCalendar(calendar, proEmail) {
-  for (let i = 0; i < calendar.getEvents().length; i++) {
-    calendar.getEvents()[i].remove()
+  while (calendar.getEvents().length > 0) {
+    const popIndex = calendar.getEvents().length - 1
+    calendar.getEvents()[popIndex].remove()
+    console.log(calendar.getEvents())
   }
   firebase.database().ref("/users").once("value")
   .then(function(snapshot) {
