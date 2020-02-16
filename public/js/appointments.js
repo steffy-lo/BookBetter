@@ -20,7 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       calendar.addEvent(event);
       pushEventToDb(event);
-    },  
+    }, 
+    eventClick: function(info) {
+      alert('Event: ' + info.event.title +" will be removed.");
+      removeEvent(info.event.title);
+      
+    }
   });
   contactsMenu.addEventListener('change', function(){ displayCalendar(calendar); })
 
@@ -108,3 +113,28 @@ function pushToDb(event, proEmail){
     });
 }
 
+function removeEvent(title){
+  const email = firebase.auth().currentUser.email;
+  firebase.database().ref("/users").once("value")
+      .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+          var value = childSnapshot.val();
+          if (value.userEmail === email) {
+            var key1 = childSnapshot.key.toString();
+            var eventRef = db.ref("/users/"+key1+"/events");
+            console.log("/users/"+childSnapshot.key.toString()+"/events");
+            eventRef.once("value")
+            .then(function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {
+                var value = childSnapshot.val();
+                if (value.title === title) {
+                  db.ref("/users/"+key1+"/events/"+childSnapshot.key.toString()).remove();
+                  console.log("/users/"+key1+"/events/"+childSnapshot.key.toString());
+                  location.reload();
+                }
+              })
+            })
+          }
+        })
+      })
+}
