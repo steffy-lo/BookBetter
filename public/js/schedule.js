@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       minTime: '8:00',
       maxTime: '18:00',
       height: 600,
+      event: [],
       eventClick: function(info) {
         alert('Event: ' + info.event.title +" will be removed.");
         removeEvent(info.event.title);

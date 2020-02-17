@@ -114,3 +114,13 @@ p, dt, th{
     background-color: #f15b65;
     border-color: rgb(255, 193, 193);
 }
+
+.fc-event .fc-time {
+    color: white;
+    font-size: medium;
+}
+
+.fc-event .fc-title {
+    color: white;
+    font-size: medium;
+}
